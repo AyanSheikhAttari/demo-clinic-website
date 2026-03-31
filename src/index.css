@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #2C2C2C;
+    background-color: #FAF7F2;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-[#2C2C2C] text-white px-7 py-3.5 rounded-full font-medium text-sm tracking-wide transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-[#2C2C2C] text-[#2C2C2C] px-7 py-3.5 rounded-full font-medium text-sm tracking-wide transition-all duration-300 hover:bg-[#2C2C2C] hover:text-white hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-[#C4A97D] text-white px-7 py-3.5 rounded-full font-medium text-sm tracking-wide transition-all duration-300 hover:bg-[#B89660] hover:shadow-gold hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-2.5 bg-[#25D366] text-white px-7 py-3.5 rounded-full font-medium text-sm tracking-wide transition-all duration-300 hover:bg-[#1ebe5d] hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#2C2C2C] leading-tight;
+  }
+  .section-subtitle {
+    @apply text-[#6B6B6B] text-base md:text-lg leading-relaxed max-w-2xl;
+  }
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-soft transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+  }
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+  .gold-line {
+    @apply w-12 h-[2px] bg-[#C4A97D] mx-auto;
+  }
+  .gold-line-left {
+    @apply w-12 h-[2px] bg-[#C4A97D];
+  }
+  .eyebrow {
+    @apply text-[#C4A97D] text-xs font-semibold uppercase tracking-[0.2em];
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9B99B;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C4A97D;
+}
+
+/* Fade in animation on scroll */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Treatment card hover gradient border */
+.treatment-card {
+  position: relative;
+  overflow: hidden;
+}
+.treatment-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, transparent);
+  transition: background 0.3s ease;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.treatment-card:hover::before {
+  background: linear-gradient(135deg, #C4A97D, #EDE4DA);
+}
+
+/* FAQ accordion */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-answer.open {
+  max-height: 300px;
+}
+
+/* Floating WhatsApp button animation */
+@keyframes wpPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+.whatsapp-float {
+  animation: wpPulse 2.5s ease-in-out infinite;
+}
+
+/* Testimonial card gradient */
+.testimonial-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF7F2 100%);
+}
+
+/* Input focus styles */
+.form-input {
+  @apply w-full px-4 py-3.5 rounded-xl border border-[#EDE4DA] bg-white text-[#2C2C2C] text-sm placeholder-[#B0A99A] transition-all duration-200 outline-none;
+}
+.form-input:focus {
+  border-color: #C4A97D;
+  box-shadow: 0 0 0 3px rgba(196, 169, 125, 0.15);
+}
+
+/* Number badge */
+.stat-number {
+  background: linear-gradient(135deg, #C4A97D, #B89660);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #2C2C2C 30%, #C4A97D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
